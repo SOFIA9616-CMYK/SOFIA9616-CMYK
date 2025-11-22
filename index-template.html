@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 缓存控制 -->
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="expires" content="0" />
+
+    <!-- SEO 配置 -->
+    <title>我的应用标题</title>
+    <meta name="keywords" content="关键词1,关键词2,关键词3" />
+    <meta name="description" content="这里填写你的应用描述" />
+    <meta name="author" content="Your Name" />
+
+    <!-- 禁用翻译 -->
+    <meta name="google" content="notranslate" />
+
+    <!-- Open Graph 社交分享配置 -->
+    <meta property="og:title" content="我的应用标题" />
+    <meta property="og:description" content="应用描述" />
+    <meta property="og:image" content="/images/og-image.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- 网站图标 -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!--
+    ==================================================
+    第三方服务配置区域 - 根据需要启用
+    ==================================================
+    -->
+
+    <!-- 百度统计 - 取消注释并替换为你的站点ID -->
+    <!--
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?YOUR_SITE_ID";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    -->
+
+    <!-- Google Analytics - 取消注释并替换为你的跟踪ID -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_TRACKING_ID');
+    </script>
+    -->
+
+    <!-- 错误监控 - Fundebug（可选） -->
+    <!--
+    <script
+      src="https://js.fundebug.cn/fundebug.2.8.6.min.js"
+      apikey="YOUR_API_KEY"
+      crossorigin="anonymous"
+    ></script>
+    -->
+
+    <noscript>欢迎使用！请启用JavaScript以获得最佳体验。</noscript>
+
+    <!-- 应用配置脚本 -->
+    <script>
+      // 禁用 document.write() 防止XSS攻击
+      document.write = function () {
+        // 禁用 document.write()
+      };
+
+      // 动态标题配置（可选）
+      if (typeof window !== "undefined") {
+        // document.title = "自定义标题";
+      }
+    </script>
+
+    <!-- 应用版本号 -->
+    <meta name="version" content="1.0.0" />
+
+    <!-- 样式文件 - 根据实际情况修改 -->
+    <!-- <link rel="stylesheet" href="/css/app.css" /> -->
+
+    <script>
+      window.routerBase = "/";
+    </script>
+  </head>
+
+  <body>
+    <div id="root">
+      <!-- 加载动画样式 -->
+      <style>
+        html,
+        body,
+        #root {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        #root {
+          background-repeat: no-repeat;
+          background-size: 100% auto;
+        }
+
+        .page-loading-warp {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 98px;
+        }
+
+        .ant-spin {
+          position: absolute;
+          display: none;
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          color: #1890ff;
+          font-size: 14px;
+          font-variant: tabular-nums;
+          line-height: 1.5;
+          text-align: center;
+          list-style: none;
+          opacity: 0;
+          transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+        }
+
+        .ant-spin-spinning {
+          position: static;
+          display: inline-block;
+          opacity: 1;
+        }
+
+        .ant-spin-dot {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          font-size: 20px;
+        }
+
+        .ant-spin-dot-item {
+          position: absolute;
+          display: block;
+          width: 9px;
+          height: 9px;
+          background-color: #1890ff;
+          border-radius: 100%;
+          transform: scale(0.75);
+          transform-origin: 50% 50%;
+          opacity: 0.3;
+          animation: antSpinMove 1s infinite linear alternate;
+        }
+
+        .ant-spin-dot-item:nth-child(1) {
+          top: 0;
+          left: 0;
+        }
+
+        .ant-spin-dot-item:nth-child(2) {
+          top: 0;
+          right: 0;
+          animation-delay: 0.4s;
+        }
+
+        .ant-spin-dot-item:nth-child(3) {
+          right: 0;
+          bottom: 0;
+          animation-delay: 0.8s;
+        }
+
+        .ant-spin-dot-item:nth-child(4) {
+          bottom: 0;
+          left: 0;
+          animation-delay: 1.2s;
+        }
+
+        .ant-spin-dot-spin {
+          transform: rotate(45deg);
+          animation: antRotate 1.2s infinite linear;
+        }
+
+        .ant-spin-lg .ant-spin-dot {
+          width: 32px;
+          height: 32px;
+          font-size: 32px;
+        }
+
+        .ant-spin-lg .ant-spin-dot i {
+          width: 14px;
+          height: 14px;
+        }
+
+        @keyframes antSpinMove {
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes antRotate {
+          to {
+            transform: rotate(405deg);
+          }
+        }
+      </style>
+
+      <!-- 加载动画 -->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          min-height: 420px;
+        "
+      >
+        <div class="page-loading-warp">
+          <div class="ant-spin ant-spin-lg ant-spin-spinning">
+            <span class="ant-spin-dot ant-spin-dot-spin">
+              <i class="ant-spin-dot-item"></i>
+              <i class="ant-spin-dot-item"></i>
+              <i class="ant-spin-dot-item"></i>
+              <i class="ant-spin-dot-item"></i>
+            </span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          加载中...
+        </div>
+      </div>
+    </div>
+
+    <!-- 应用主脚本 - 根据实际情况修改 -->
+    <!-- <script src="/js/app.js"></script> -->
+  </body>
+</html>
